@@ -45,28 +45,45 @@ function passCrit(passLength) {
     if (!lowerCase && !upperCase && !num && !specialChar) {
         window.alert("You must select at least one criteria.")
     }
+
+    if (!lowerCase) {
+      criteriaNumber = criteriaNumber - 1
+    }
+
+    if (!upperCase) {
+      criteriaNumber = criteriaNumber - 1
+    }
+
+    if (!num) {
+      criteriaNumber = criteriaNumber - 1
+    }
+
+    if (!specialChar) {
+      criteriaNumber = criteriaNumber - 1
+    }
+
 // password is showing as undefined but using the number divided by true criteria works. 
     for (let index = 0; index < 12 / 4; index++) {
       
       if (lowerCase) {
         let lowerIter = letters[Math.floor(Math.random() * 26)];
         superPass.push(lowerIter)
-      } else {criteriaNumber = criteriaNumber - 1}
+      } 
     
       if (upperCase) {
         let upperIter = upLetters[Math.floor(Math.random() * 26)];
         superPass.push(upperIter)
-      } else {criteriaNumber = criteriaNumber - 1}
+      } 
       
       if (num) {
         let numIter = numbers[Math.floor(Math.random() * 10)];
         superPass.push(numIter)
-      } else {criteriaNumber = criteriaNumber -1}
+      }
       
       if (specialChar) {
         let specialIter = specials[Math.floor(Math.random() * 11)];
         superPass.push(specialIter)
-      } else {criteriaNumber = criteriaNumber -1}
+      }
       
     };
     console.log(criteriaNumber)
