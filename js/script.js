@@ -66,22 +66,22 @@ function passCrit(passLength) {
     for (let index = 0; index < 12 / criteriaNumber; index++) {
       
       if (lowerCase) {
-        let lowerIter = letters[Math.floor(Math.random() * 26 - 1)];
+        let lowerIter = letters[Math.floor(Math.random() * 26)];
         superPass.push(lowerIter)
       } 
     
       if (upperCase) {
-        let upperIter = upLetters[Math.floor(Math.random() * 26 - 1)];
+        let upperIter = upLetters[Math.floor(Math.random() * 26)];
         superPass.push(upperIter)
       } 
       
       if (num) {
-        let numIter = numbers[Math.floor(Math.random() * 10 - 1)];
+        let numIter = numbers[Math.floor(Math.random() * 10)];
         superPass.push(numIter)
       }
       
       if (specialChar) {
-        let specialIter = specials[Math.floor(Math.random() * 11 - 1)];
+        let specialIter = specials[Math.floor(Math.random() * 11)];
         superPass.push(specialIter)
       }
       
