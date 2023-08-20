@@ -63,7 +63,7 @@ function passCrit(passLength) {
     }
 
 // password is showing as undefined but using the number divided by true criteria works. 
-    for (let index = 0; index < 12 / criteriaNumber; index++) {
+    for (let index = 0; index < 20 / criteriaNumber; index++) {
       
       if (lowerCase) {
         let lowerIter = letters[Math.floor(Math.random() * 26)];
@@ -78,12 +78,12 @@ function passCrit(passLength) {
       if (num) {
         let numIter = numbers[Math.floor(Math.random() * 10)];
         superPass.push(numIter)
-      }
+      } 
       
       if (specialChar) {
         let specialIter = specials[Math.floor(Math.random() * 11)];
         superPass.push(specialIter)
-      }
+      } 
       
     };
     console.log(criteriaNumber)
@@ -91,7 +91,10 @@ function passCrit(passLength) {
     return superPass;
    };
   
+// Sometimes password array gives + 1, 2, or 3 extra indexes so we just need to take the output array
+// and check if it's equal to length of password and pop off one, two, or three from end of array.
 
+// OR check after each 
 /*
     else if (lowerCase && upperCase && num && specialChar) {
        superPass.push(letters.concat(upLetters, numbers, specials));
