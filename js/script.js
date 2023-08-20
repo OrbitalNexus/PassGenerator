@@ -63,25 +63,25 @@ function passCrit(passLength) {
     }
 
 // password is showing as undefined but using the number divided by true criteria works. 
-    for (let index = 0; index < 12 / 4; index++) {
+    for (let index = 0; index < 12 / criteriaNumber; index++) {
       
       if (lowerCase) {
-        let lowerIter = letters[Math.floor(Math.random() * 26)];
+        let lowerIter = letters[Math.floor(Math.random() * 26 - 1)];
         superPass.push(lowerIter)
       } 
     
       if (upperCase) {
-        let upperIter = upLetters[Math.floor(Math.random() * 26)];
+        let upperIter = upLetters[Math.floor(Math.random() * 26 - 1)];
         superPass.push(upperIter)
       } 
       
       if (num) {
-        let numIter = numbers[Math.floor(Math.random() * 10)];
+        let numIter = numbers[Math.floor(Math.random() * 10 - 1)];
         superPass.push(numIter)
       }
       
       if (specialChar) {
-        let specialIter = specials[Math.floor(Math.random() * 11)];
+        let specialIter = specials[Math.floor(Math.random() * 11 - 1)];
         superPass.push(specialIter)
       }
       
