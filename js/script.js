@@ -41,6 +41,7 @@ function passCrit(passLength) {
     let num = window.confirm('Include numbers?');
     let specialChar = window.confirm('Include special characters?');
     var superPass = []
+    let criteriaNumber = 4;
     if (!lowerCase && !upperCase && !num && !specialChar) {
         window.alert("You must select at least one criteria.")
     }
@@ -50,22 +51,25 @@ function passCrit(passLength) {
       if (lowerCase) {
         let lowerIter = letters[Math.floor(Math.random() * 26)];
         superPass.push(lowerIter)
-      }
+      } else {criteriaNumber = criteriaNumber - 1}
     
       if (upperCase) {
         let upperIter = upLetters[Math.floor(Math.random() * 26)];
         superPass.push(upperIter)
-      }
+      } else {criteriaNumber = criteriaNumber - 1}
+      
       if (num) {
         let numIter = numbers[Math.floor(Math.random() * 10)];
         superPass.push(numIter)
-      }
+      } else {criteriaNumber = criteriaNumber -1}
+      
       if (specialChar) {
         let specialIter = specials[Math.floor(Math.random() * 11)];
         superPass.push(specialIter)
-      }
+      } else {criteriaNumber = criteriaNumber -1}
       
     };
+    console.log(criteriaNumber)
     console.log(superPass)
     return superPass;
    };
