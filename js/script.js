@@ -29,7 +29,6 @@ function generatePassword() {
     window.alert('Password must be between 8 and 128 characters.');
     passLength = window.prompt('Length of Password?');
 } 
-  console.log(password);
   return passLength;
 };
 
@@ -102,7 +101,6 @@ Return the new array value.*/
     for (let index = getPassCrit.length; index > password; index--) {
        getPassCrit.pop(index)
     }
-    console.log(getPassCrit)
     return getPassCrit;
    };
 
@@ -117,7 +115,6 @@ Return the new array value.*/
       finalPass.push(randoPass) 
       console.log(randoPass)   
     }
-    console.log(`finalPass: ${finalPass}`);
     let newPassword = finalPass.join('')
     return newPassword;
   };
