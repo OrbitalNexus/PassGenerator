@@ -8,12 +8,13 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  let getPassCrit = passCrit();
-  let superRandom = firstRandom();
+  let getPassCrit = passCrit(password);
+  let awesomeBurger = fixPass (password, getPassCrit)
+  let superRandom = gennedPass(password, awesomeBurger);
   //let randomize = gennedPass(password, getPassCrit);
   var passwordText = document.querySelector("#password");
   
-  passwordText.value = password;
+  passwordText.value = superRandom;
 };
 
 // Add event listener to generate button
@@ -35,7 +36,7 @@ function generatePassword() {
 
 // window confirm prompts for criteria of arrays. Then error prompt if none selected.
 // Then push arrays into new array if they have been selected.
-function passCrit(passLength) {
+function passCrit(password) {
     let lowerCase = window.confirm('Include lowercase letters?');
     let upperCase = window.confirm('Include uppercase letters?');
     let num = window.confirm('Include numbers?');
@@ -63,7 +64,7 @@ function passCrit(passLength) {
     }
 
 // password is showing as undefined but using the number divided by true criteria works. 
-    for (let index = 0; index < 20 / criteriaNumber; index++) {
+    for (let index = 0; index < password / criteriaNumber; index++) {
       
       if (lowerCase) {
         let lowerIter = letters[Math.floor(Math.random() * 26)];
@@ -86,10 +87,34 @@ function passCrit(passLength) {
       } 
       
     };
-    console.log(criteriaNumber)
-    console.log(superPass)
+    // console.log(criteriaNumber)
+   // console.log(password)
+    //console.log(superPass)
     return superPass;
    };
+  
+   function fixPass(password, getPassCrit) {
+
+    for (let index = getPassCrit.length; index > password; index--) {
+       getPassCrit.pop(index)
+    }
+    console.log(getPassCrit)
+    return getPassCrit;
+   };
+
+   function gennedPass(password, awesomeBurger) {
+    var finalPass = []
+    //console.log(getPassCrit)
+    for (let i = 0; i < password; i++) {
+      let randoPass = awesomeBurger[Math.floor(Math.random() * awesomeBurger.length)];
+      finalPass.push(randoPass) 
+      console.log(randoPass)   
+    }
+    console.log(`finalPass: ${finalPass}`);
+    let newPassword = finalPass.join('')
+    return newPassword;
+  };
+
   
 // Sometimes password array gives + 1, 2, or 3 extra indexes so we just need to take the output array
 // and check if it's equal to length of password and pop off one, two, or three from end of array.
