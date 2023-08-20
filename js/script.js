@@ -44,7 +44,7 @@ function passCrit(passLength) {
     if (!lowerCase && !upperCase && !num && !specialChar) {
         window.alert("You must select at least one criteria.")
     }
-// password is showing as undefined but using the number divided by 4 works. 
+// password is showing as undefined but using the number divided by true criteria works. 
     for (let index = 0; index < 12 / 4; index++) {
       
       if (lowerCase) {
