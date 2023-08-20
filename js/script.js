@@ -9,9 +9,8 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   let getPassCrit = passCrit(password);
-  let awesomeBurger = fixPass (password, getPassCrit)
-  let superRandom = gennedPass(password, awesomeBurger);
-  //let randomize = gennedPass(password, getPassCrit);
+  let fixedPop = fixPass (password, getPassCrit)
+  let superRandom = gennedPass(password, fixedPop);
   var passwordText = document.querySelector("#password");
   
   passwordText.value = superRandom;
@@ -21,8 +20,9 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-// Window prompt to type in password length, then while that defines min and max characters, if under or over window prompt error, then repeat password prompt.
-// Finally return the password length value to global scope. 
+/* Window prompt to type in password length, then while that defines min and max characters, 
+if under or over window prompt error, then repeat password prompt.
+Finally return the password length value to global scope. */
 function generatePassword() {
   let passLength = window.prompt('Length of Password?');
   while (passLength <= 7 || passLength >= 129) {
@@ -34,8 +34,10 @@ function generatePassword() {
 };
 
 
-// window confirm prompts for criteria of arrays. Then error prompt if none selected.
-// Then push arrays into new array if they have been selected.
+/* Window confirm prompts for criteria of arrays. Then error prompt if none selected.
+If statements for criteriaNumber to minus one from four to get what's selected. Because,
+For loop runs all four if statements when it iterates and randomizes to create array. So,
+we divide by the number of criteria selected to determine length of array. */
 function passCrit(password) {
     let lowerCase = window.confirm('Include lowercase letters?');
     let upperCase = window.confirm('Include uppercase letters?');
@@ -63,7 +65,10 @@ function passCrit(password) {
       criteriaNumber = criteriaNumber - 1
     }
 
-// password is showing as undefined but using the number divided by true criteria works. 
+/* iterate through if statements and randomize from arrays then push to new array,
+selecting one character from each if statement. This causes password lengths of odd numbers,
+and any number not divisible by 1, 2, 3, or 4, to return a few extra array indexes, up to three.
+Return the new array value.*/
     for (let index = 0; index < password / criteriaNumber; index++) {
       
       if (lowerCase) {
@@ -87,12 +92,11 @@ function passCrit(password) {
       } 
       
     };
-    // console.log(criteriaNumber)
-   // console.log(password)
-    //console.log(superPass)
     return superPass;
    };
   
+   /* For loop to iterate over array length if index is greater than password length,
+  then pop off the last item of array to get accurate array length. Return array value.*/
    function fixPass(password, getPassCrit) {
 
     for (let index = getPassCrit.length; index > password; index--) {
@@ -102,11 +106,14 @@ function passCrit(password) {
     return getPassCrit;
    };
 
-   function gennedPass(password, awesomeBurger) {
+   /*  Create empty array, then for loop to iterate and randomize old array and push it,
+   into the new array. Finally, join the array with blanks to remove the commas. Return,
+   new Password value.*/
+   function gennedPass(password, fixedPop) {
     var finalPass = []
     //console.log(getPassCrit)
     for (let i = 0; i < password; i++) {
-      let randoPass = awesomeBurger[Math.floor(Math.random() * awesomeBurger.length)];
+      let randoPass = fixedPop[Math.floor(Math.random() * fixedPop.length)];
       finalPass.push(randoPass) 
       console.log(randoPass)   
     }
@@ -115,137 +122,7 @@ function passCrit(password) {
     return newPassword;
   };
 
-  
-// Sometimes password array gives + 1, 2, or 3 extra indexes so we just need to take the output array
-// and check if it's equal to length of password and pop off one, two, or three from end of array.
-
-// OR check after each 
-/*
-    else if (lowerCase && upperCase && num && specialChar) {
-       superPass.push(letters.concat(upLetters, numbers, specials));
-    }
-
-    else if (lowerCase && upperCase && num) {
-      superPass.push(letters.concat(upLetters, numbers))
-   }
-
-    else if (upperCase && num && specialChar) {
-      superPass.push(upLetters.concat(numbers, specials))
-    }
-// Works gave less characters once, throwing commas in sometimes.
-    else if (lowerCase && upperCase && specialChar) {
-      superPass.push(letters.concat(upLetters, specials))
-    }
-
-    else if (lowerCase && num && specialChar) {
-      superPass.push(letters.concat(numbers, specials))   
-    }
-
-    else if (lowerCase && upperCase) {
-      superPass.push(letters.concat(upLetters))
-      //console.log(`lowercase + uppercase: ${superPass}`)   
-    }
-    
-    else if (lowerCase && num) {
-      superPass.push(letters.concat(numbers))   
-      //console.log(`lowercase + numbers: ${superPass}`)
-    }
-
-    else if (lowerCase && specialChar) {
-      superPass.push(letters.concat(specials));   
-    }
-
-    else if (upperCase && num) {
-      superPass.push(upLetters.concat(numbers));
-      //console.log(`uppercase + numbers: ${superPass}`)   
-    }
-
-    else if (upperCase && specialChar) {
-      superPass.push(upLetters.concat(specials));   
-    }
-
-    else if (num && specialChar) {
-      superPass.push(numbers.concat(specials));   
-    }
-
-    else if (lowerCase) {
-      superPass.push(letters);
-    }
-
-    else if (upperCase) {
-      superPass.push(upLetters)
-    }
-
-    else if (num) {
-      superPass.push(numbers)
-    }
-
-    else { 
-      superPass.push(specials)
-    }
-    // console.log(superPass)
-    return superPass[0];
-  }; 
-  */
-
-// using parameters of password length and criteria create new array then loop through until meets length. 
-// Then randomize the new array and print out password while removing commas. 
-/*function gennedPass(password, getPassCrit) {
-  var finalPass = []
-  //console.log(getPassCrit)
-  for (let i = 0; i < password; i++) {
-    let randoPass = getPassCrit[Math.floor(Math.random() * getPassCrit.length - 1)];
-    finalPass.push(randoPass)
-    
-    // const element = array[i];
-  }
-  // console.log(`finalPass: ${finalPass}`);
-  let newPassword = finalPass.join('')
-  return newPassword;
-}
-
-
-/*function firstRandom(password, getPasscrit) {
-  let firstPass = []
-
-  while (lowerCase) {
-    let lowerIter = lowerCase[Math.floor(Math.random() * 1)];
-    firstPass.push(lowerIter)
-  }
-
-  while (upperCase) {
-    let upperIter = upperCase[Math.floor(Math.random() * 1)];
-    firstPass.push(upperIter)
-  }
-  while (num) {
-    let numIter = num[Math.floor(Math.random() * 1)];
-    firstPass.push(numIter)
-  }
-  while (specialChar) {
-    let specialIter = specialChar[Math.floor(Math.random() * 1)];
-    firstPass.push(specialIter)
-  }
-  console.log(firstPass) 
-} */
-// TO DO:
-// Create pattern to iterate over each criteria, then take string of password and randomize that again.
-// Create functions that iterate over array criteria then return value and next function does the same,
-// so on, until the final array has the length. 
-/* 
-
-// DONE!
-Ask the user to put in the amount of characters they want in their password and verify if it meets the standards of 8 to 60 characters
-if password is 0, return an alert and if password is smaller than 8 or larger than 60 characters return an alert error else move on to step 2.
-
-  
-Ask the user if they would like to have capital letters in their password, lowercase, numbers, or special characters
-
-  
-Once have answers, make some conditional statements on whether they chose yes or no for the questions in step 2  to see if they selected all the items, none, or only some of them and then join the arrays into 1
-
-  
-Take the information that was joined into 1 array and then run it through a for loop and then randomize the array to the length of what the user put in and then return it and pass it into our password variable
-
-*/
-
-// This is not working right. LET"S FIX THIS. We can do this Josh.
+  /* Now we have the final password printing to the generator text box. All done.
+  The way this is written should be full-proof with no errors or bugs, 
+  it will give the correct length with at least one of the criteria selected each time.
+  Enjoy! */
